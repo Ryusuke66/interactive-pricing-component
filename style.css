@@ -247,12 +247,8 @@ h1 {
     font-weight: 800;
     border-radius: 20px;
     padding: 8px 15px;
-    display: none;
-    margin-left: 10px;
-}
-
-.active .year::after, .inactive .year::after {
     display: inline-block;
+    margin-left: 10px;
 }
 
 hr {
@@ -452,6 +448,7 @@ button {
     .billing {
         margin: 0 20px;
         justify-content: flex-end;
+        transform: translateX(0);
     }
 
     .month, .year {
