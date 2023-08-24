@@ -1,0 +1,536 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    color: hsl(225, 20%, 60%);
+    min-height: 100vh;
+}
+
+main {
+    background: hsl(230, 100%, 99%);
+    min-height: 100vh;
+}
+
+.header {
+    background: url('images/pattern-circles.svg'), hsl(222, 87%, 97%);
+    background-repeat: no-repeat;
+    background-position: 50% 22%;
+    background-size: 39%;
+    height: 800px;
+    text-align: center;
+    padding: 176px 20px 0;
+    border-bottom-left-radius: 50%;
+}
+
+h1 {
+    color: hsl(227, 35%, 25%);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.header p {
+    padding: 0 10px;
+    line-height: 1.7;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    margin-top: -330px;
+    width: 92%;
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 120px;
+}
+
+.views {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+}
+
+.pageViews {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    margin: 80px 0;
+    height: 15px;
+    outline: none;
+    background-color: hsl(224, 65%, 95%);
+    border-radius: 10px;
+}
+
+.pageViews::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 60px;
+    height:60px;
+    border-radius: 50%;
+    background: url('images/icon-slider.svg'), hsl(172, 68%, 53%);
+    background-repeat: no-repeat;
+    background-size: 55%;
+    background-position: center;
+}
+
+.pageViews::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+    background: url('images/icon-slider.svg'), hsl(172, 68%, 53%);
+    background-repeat: no-repeat;
+    background-size: 55%;
+    background-position: center;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.price .num {
+    font-size: 2em;
+    font-weight: 800;
+    color: hsl(227, 35%, 25%);
+}
+
+.billing {
+    transform: translateX(-40px);
+    margin: 70px 0 77px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.month, .year {
+    font-size: 20px;
+    height: 43px;
+    display: inline-flex;
+    align-items: center;
+    background: white;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.month {
+    width: 260px;
+    margin-right: -80px;
+    padding-left: 20px;
+}
+
+.year {
+    width: 0;
+    justify-content: flex-end;
+    margin-left: -80px;
+}
+
+.active {
+    transform: translateX(50px);
+    transition: 1s;
+}
+
+.inactive {
+    transform: translateX(-40px);
+    transition: 1s;
+}
+
+.active .month {
+    animation: monthShrink 1s forwards;
+}
+
+.active .year {
+    animation: yearExpand 1s forwards;
+    animation-delay: .3s;
+}
+
+@keyframes monthShrink {
+    0% {width: 260px}
+    100% {width: 0}
+}
+
+@keyframes yearExpand {
+    0% {width: 0}
+    100% {width: 320px}
+}
+
+.inactive .month {
+    animation: monthExpand 1s forwards;
+    animation-delay: .3s;
+    width: 0;
+}
+
+.inactive .year {
+    animation: yearShrink 1s forwards;
+}
+
+@keyframes monthExpand {
+    0% {width: 0}
+    100% {width: 260px}
+}
+
+@keyframes yearShrink{
+    0% {width: 320px}
+    100% {width: 0}
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 83px;
+    height: 43px;
+}
+
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: hsl(223, 50%, 87%);
+    transition: .4s;
+    border-radius: 20px;
+    box-shadow: -5px 0 10px 0 hsl(223, 50%, 87%);
+}
+
+.active .slider {
+    box-shadow: 5px 0 10px 0 hsl(223, 50%, 87%);
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 28px;
+    width: 28px;
+    left: 7px;
+    bottom: 7px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+
+
+.switch input:checked ~.slider::before {
+    transform: translateX(40px);
+}
+
+.year::after {
+    content: '25%';
+    background: hsl(14, 92%, 95%);
+    color: hsl(15, 100%, 70%);
+    font-size: 20px;
+    font-weight: 800;
+    border-radius: 20px;
+    padding: 8px 15px;
+    display: none;
+    margin-left: 10px;
+}
+
+.active .year::after, .inactive .year::after {
+    display: inline-block;
+}
+
+hr {
+    margin:0 -50px;
+    border: none;
+    height: 1px;
+    background-color: hsl(224, 65%, 95%);
+}
+
+.pros {
+    margin: 45px 0 60px;
+}
+
+.pros div {
+    margin-bottom: 20px;
+}
+
+.pros img {
+    width: 20px;
+    margin-right: 30px;
+}
+
+button {
+    border: none;
+    height: 85px;
+    width: 340px;
+    max-width: 100%;
+    border-radius: 50px;
+    background: hsl(227, 35%, 25%);
+    font: inherit;
+    color: hsl(226, 100%, 87%);
+    font-weight: 800;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.attribution {
+    text-align: center;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 -10px 10px 0 rgba(0, 0, 0, 0.05);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+    text-decoration: none;
+}
+
+@media (min-width: 750px) {
+    body {
+        font-size: 26px;
+    }
+
+    header {
+        padding: 176px 0 0;
+    }
+
+    h1 {
+        font-size: 1.55em;
+    }
+
+    .header p {
+        padding: 0 180px;
+    }
+
+    .card {
+        padding: 65px 50px;
+    }
+
+    .views {
+        font-size: 25px;
+    }
+
+    .pageViews::-webkit-slider-thumb {
+        width: 80px;
+        height: 80px;
+    }
+
+    .pageViews::-moz-range-thumb {
+        width: 80px;
+        height:80px;
+    }
+
+    .price {
+        font-size: 28px;
+    }
+
+    .price .num {
+        font-size: 2.3em;
+    }
+
+    .month, .year {
+        font-size: 24px;
+    }
+
+    .month {
+        width: 290px;
+    }
+
+    @keyframes monthExpand {
+        0% {width: 0}
+        100% {width: 290px}
+    }
+    @keyframes monthShrink {
+        0% {width: 290px}
+        100% {width: 0}
+    }
+}
+
+@media (min-width: 992px) {
+    body {
+        font-size: 15px;
+    }
+
+    .header {
+        background-size: 10%;
+        background-position: center 16%;
+        height: 450px;
+        padding-top: 105px;
+        border-bottom-left-radius: 200px;
+    }
+
+    h1 {
+        font-size: 1.9em;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        width: 540px;
+        margin-top: -180px;
+        padding: 52px 42px 20px;
+        margin-bottom: 70px;
+        text-align: left;
+        position: relative;
+        box-shadow: 0 10px 30px 0 hsl(230, 100%, 99%);
+    }
+
+    .views {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    .price {
+        position: absolute;
+        top: 37px;
+        right: 50px;
+        font-size: 15px;
+        gap: 10px;
+    }
+
+    .price .num {
+        font-size: 2.5em;
+    }
+
+    .pageViews {
+        height: 7px;
+        margin: 60px 0 55px;
+    }
+
+    .pageViews::-webkit-slider-thumb {
+        width: 40px;
+        height: 40px;
+        transition: .2s;
+        cursor: pointer;
+    }
+    
+    .pageViews::-moz-range-thumb {
+        width: 40px;
+        height: 40px;
+        transition: .2s;
+        cursor: pointer;
+    }
+
+    .pageViews::-webkit-slider-thumb:hover {
+        box-shadow: 0px 10px 30px 0  hsla(174, 100%, 50%, 0.6);
+    }
+
+    .pageViews::-moz-range-thumb:hover {
+        box-shadow: 0px 10px 30px 0  hsla(174, 100%, 50%, 0.6);
+    }
+
+    .pageViews::-webkit-slider-thumb:active {
+        background-color: hsl(174, 53%, 45%);
+    }
+
+    .pageViews::-moz-range-thumb:active {
+        background-color: hsl(174, 53%, 45%);
+    }
+
+    .slider:hover {
+        background: hsl(172, 68%, 53%);
+    }
+
+    .billing {
+        margin: 0 20px;
+        justify-content: flex-end;
+    }
+
+    .month, .year {
+        font-size: 13px;
+        background: none;
+        animation: none;
+        box-shadow: none;
+        width: auto;
+        display: block;
+        height: auto;
+        margin: 0;
+    }
+
+    .inactive .year, .inactive .month {
+        animation: none;
+        width: auto;
+    }
+
+    .active .year, .active .month {
+        animation: none;
+        width: auto;
+    }
+
+    .active, .inactive {
+        transform: translateX(0px);
+        transition: none;
+    }
+
+    .switch {
+        width: 43px;
+        height: 23px;
+        margin: 0 12px;
+    }
+
+    .slider::before {
+        height: 15px;
+        width: 15px;
+        top: 4px;
+        left: 5px;
+    }
+
+    .switch input:checked ~ .slider::before {
+        transform: translateX(18px);
+    }
+
+    .year::after {
+        content: '25% discount';
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+
+    .slider {
+        box-shadow: none;
+    }
+
+    hr {
+        margin-top: 40px;
+    }
+
+    .pros {
+        margin: 32px 0 0;
+        font-size: 12px;
+    }
+
+    .pros div {
+        margin-bottom: 10px;
+    }
+
+    .pros img {
+        width: 10px;
+        margin-right: 15px;
+    }
+
+    button {
+        width: 170px;
+        height: 40px;
+        position: absolute;
+        right: 45px;
+        bottom: 45px;
+        font-size: 13px;
+    }
+}
