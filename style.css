@@ -530,4 +530,8 @@ button {
         bottom: 45px;
         font-size: 13px;
     }
+
+    button:hover {
+        color: white;
+    }
 }
