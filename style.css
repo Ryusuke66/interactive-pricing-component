@@ -386,7 +386,7 @@ button {
         margin-bottom: 70px;
         text-align: left;
         position: relative;
-        box-shadow: 0 10px 30px 0 hsl(230, 100%, 99%);
+        box-shadow: 0 20px 30px 0 hsl(229, 100%, 95%);
     }
 
     .views {
