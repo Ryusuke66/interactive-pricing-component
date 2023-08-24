@@ -500,7 +500,7 @@ button {
         padding: 3px 8px;
     }
 
-    .slider {
+    .slider, .active .slider {
         box-shadow: none;
     }
 
