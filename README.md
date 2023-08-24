@@ -31,10 +31,7 @@ Users should be able to:
 
 ## Mobile design
 
-<p float="left">
-  <img src="./screenshots/mobile-design-1.png" width="50%" />
-  <img src="./screenshots/mobile-design-2.png" width="50%" />
-</p>
+![](./screenshots/mobile-design.png)
 
 ### Links
 
